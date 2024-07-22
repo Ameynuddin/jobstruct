@@ -107,7 +107,7 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-For any questions or feedback, please contact [your name] at [your email].
+For any questions or feedback, please contact me at md.ameynuddin@gmail.com.
 
 ---
 
