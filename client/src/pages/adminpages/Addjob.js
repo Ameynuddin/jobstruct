@@ -13,7 +13,7 @@ const addJobValue = {
   jobAd: '',
 };
 const resumeUpload = {
-   resume: null,
+  resume: null,
 };
 
 const Addjob = () => {
@@ -87,19 +87,19 @@ const Addjob = () => {
           <form method="post" enctype="multipart/form-data" onSubmit={Submit_AddJob}>
             <div className="grid grid-cols-6 gap-6">
               <div className="col-span-6 sm:col-span-3">
-                <label htmlFor="position" className="text-sm font-medium text-gray-900 block mb-2">Position</label>
+                <label for="position" className="text-sm font-medium text-gray-900 block mb-2">Position</label>
                 <input type="text" onChange={(e) => getAddJobValue(e)} name="position" id="position" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Position" required />
               </div>
               <div className="col-span-6 sm:col-span-3">
-                <label htmlFor="company" className="text-sm font-medium text-gray-900 block mb-2">Company</label>
+                <label for="company" className="text-sm font-medium text-gray-900 block mb-2">Company</label>
                 <input type="text" onChange={(e) => getAddJobValue(e)} name="company" id="company" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Company" required />
               </div>
               <div className="col-span-6 sm:col-span-3">
-                <label htmlFor="jobLocation" className="text-sm font-medium text-gray-900 block mb-2">Job Location</label>
+                <label for="jobLocation" className="text-sm font-medium text-gray-900 block mb-2">Job Location</label>
                 <input type="text" onChange={(e) => getAddJobValue(e)} name="jobLocation" id="jobLocation" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Job Location" required />
               </div>
               <div className="col-span-full">
-                <label htmlFor="jobstatus" className="text-sm font-medium text-gray-900 block mb-2">Job Status</label>
+                <label for="jobstatus" className="text-sm font-medium text-gray-900 block mb-2">Job Status</label>
                 <select name='status' onChange={(e) => getAddJobValue(e)} id="jobstatus" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
                   <option value="">Select Job Status</option>
                   <option value="Pending">Pending</option>
@@ -108,7 +108,7 @@ const Addjob = () => {
                 </select>
               </div>
               <div className="col-span-full">
-                <label htmlFor="jobtype" className="text-sm font-medium text-gray-900 block mb-2">Job Type</label>
+                <label for="jobtype" className="text-sm font-medium text-gray-900 block mb-2">Job Type</label>
                 <select name='jobType' onChange={(e) => getAddJobValue(e)} id="jobtype" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5">
                   <option value="">Select Job Type</option>
                   <option value="Full Time">Full Time</option>
@@ -118,11 +118,11 @@ const Addjob = () => {
                 </select>
               </div>
               <div className="col-span-6 sm:col-span-3">
-                <label htmlFor="jobAd" className="text-sm font-medium text-gray-900 block mb-2">Job Posting</label>
+                <label for="jobAd" className="text-sm font-medium text-gray-900 block mb-2">Job Posting</label>
                 <input type="text" onChange={(e) => getAddJobValue(e)} name="jobAd" id="jobAd" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Job Ad URL" />
               </div>
               <div className="col-span-6 sm:col-span-3">
-                <label htmlFor="resume" className="text-sm font-medium text-gray-900 block mb-2">Upload CV/Resume</label>
+                <label for="resume" className="text-sm font-medium text-gray-900 block mb-2">Upload CV/Resume</label>
                 <input type="file" onChange={handleFileChange} name="resume" id="resume" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" />
               </div>
             </div>

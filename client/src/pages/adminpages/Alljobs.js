@@ -201,17 +201,19 @@ const Alljobs = () => {
                       </>
                     )}
                   </td> */}
-                    
+
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <div className="flex items-center">
-                      <Link to={"http://localhost:8080/uploads/" + job.resume} className="text-cyan-600 hover:text-cyan-900 mr-2" target="_blank">View Resume</Link>
+                      <Link to={"https://storage.googleapis.com/" + job.resume} className="text-cyan-600 hover:text-cyan-900 mr-2" target="_blank">View</Link>
                     </div>
                   </td>
 
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <div className="flex items-center">
-                      <Link to={"/editjob/" + job._id} className="text-cyan-600 hover:text-cyan-900 mr-2">Edit</Link>
-                      <button onClick={() => deleteJob(job._id)} className="text-cyan-600 hover:text-cyan-900">Delete</button>
+                      <Link to={"/editjob/" + job._id} className="text-cyan-600 hover:text-cyan-900 mr-2">
+                      <i class='fa fa-edit'></i></Link>
+                      <button onClick={() => deleteJob(job._id)} className="text-cyan-600 hover:text-cyan-900">
+                      <i class='fa fa-trash-o'></i></button>
                     </div>
                   </td>
 

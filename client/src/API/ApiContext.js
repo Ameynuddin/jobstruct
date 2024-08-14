@@ -278,16 +278,15 @@ export const ApiProvider = ({ children }) => {
                 }
             });
             if (res.ok) {
-                return { success: true, message: "Job are Delete" }
+                return { success: true, message: "Job deleted" }
             } else {
                 console.error("Jobs Are Delete")
-                return { success: false, message: "Failed To Delete a job" }
+                return { success: false, message: "Failed to delete job" }
             }
-
 
         } catch (error) {
             console.error("Error", error)
-            return { success: false, error: error.message || "An Error Is Accoured" }
+            return { success: false, error: error.message || "An error occurred" }
         }
     }
 

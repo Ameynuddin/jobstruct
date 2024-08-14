@@ -85,7 +85,7 @@ const Adminnavbar = () => {
               <img
                 crossOrigin="anonymous"
                 className="w-10 h-10 rounded-full"
-                src={`http://127.0.0.1:8080/uploads/${currentUser.avatar}`}
+                // src={`http://127.0.0.1:8080/uploads/${currentUser.avatar}`}
                 alt="Rounded avatar"
               />
               {currentUser.name}
