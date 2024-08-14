@@ -1,6 +1,15 @@
 const { default: mongoose } = require('mongoose');
 const Job = require('../models/jobModel');
 const moment = require('moment');
+const { Storage } = require('@google-cloud/storage');
+
+const storage = new Storage({
+  keyFilename: './key/key.json',
+});
+
+// Create a bucket instance
+const bucketName = 'jobstruct-web-app';
+const bucket = storage.bucket(bucketName);
 
 // create job 
 const createJob = async (req, res) => {
@@ -10,8 +19,7 @@ const createJob = async (req, res) => {
     console.log("User:", req.user);
 
     const { company, position, status, jobLocation, jobType, jobAd } = req.body;
-    const resumePath = req.file ? req.file.filename : null;
-    console.log("Resume:", resumePath);
+    // const resumePath = req.file ? req.file.filename : null;
 
     if (!company || !position) {
       res.status(404).json({
@@ -21,25 +29,62 @@ const createJob = async (req, res) => {
       return;
     }
 
-    // Create job object with all data
-    const job = await Job.create({
-      company,
-      position,
-      status,
-      jobLocation,
-      jobType,
-      jobAd,
-      resume: resumePath,
-      createdBy: req.user._id,
+    if (!req.file) {
+      return res.status(400).json({ message: 'No file uploaded' });
+    }
+
+    resume = req.file;
+    const fileName = Date.now() + resume.originalname;
+    const blob = bucket.file(fileName);
+
+    console.log("Resume:", fileName);
+
+    // Create write stream for uploading file
+    const blobStream = blob.createWriteStream({
+      resumable: false,
+      metadata: {
+        contentType: resume.mimetype,
+      },
     });
 
-    res.status(201).json({
-      status: "Success",
-      message: "Job Created Successfully",
-      data: job 
+    blobStream.on('error', (err) => {
+      console.error('Error uploading file:', err);
+      res.status(500).json({ error: 'Unable to upload file, please try again later' });
     });
+
+    blobStream.on('finish', async () => {
+      try {
+        // Create job object with all data
+        const job = await Job.create({
+          company,
+          position,
+          status,
+          jobLocation,
+          jobType,
+          jobAd,
+          resume: bucketName + '/' + fileName,
+          createdBy: req.user._id,
+        });
+
+        res.status(201).json({
+          status: "Success",
+          message: "Job Created Successfully",
+          data: job
+        });
+        console.log("Job Created:", job);
+      } catch (err) {
+        res.status(500).json({
+          status: "failed",
+          message: "Unable to create job after file upload",
+          error: err.message
+        });
+      }
+    });
+
+    blobStream.end(resume.buffer);
+
   } catch (error) {
-    console.log(error)
+    console.log("Error:", error)
     res.status(500).json({
       status: "failed",
       message: "API did not work",
@@ -53,6 +98,16 @@ const getAllJobs = async (req, res) => {
   try {
     const { status, jobType, sort, search, page = 1, limit = 10 } = req.query;
     const queryObject = { createdBy: req.user._id };
+
+    // const [resumes] = await bucket.getFiles();
+    // res.render('index', { resumes });
+    // const [files] = await bucket.getFiles();
+    // const fileList = files.map(file => ({
+    //   name: file.name,
+    //   url: `https://storage.googleapis.com/${bucketName}/${file.name}`
+    // }));
+
+    // console.log("File List:", fileList);
 
     if (status && status !== 'all') {
       queryObject.status = status;
@@ -77,8 +132,7 @@ const getAllJobs = async (req, res) => {
       result = result.sort(sortOptions[sort]);
     }
 
-    // const page = Number(req.query.page) || 1;
-    // const limit = Number(req.query.limit) || 10;
+    // Pagination
     const skip = (page - 1) * limit;
     result = result.skip(skip).limit(limit);
 
@@ -87,7 +141,8 @@ const getAllJobs = async (req, res) => {
     const numOfPages = Math.ceil(totalJobs / limit);
 
     res.status(200).json({
-      message: "this is very good",
+      message: "Jobs retrieved successfully",
+      // fileList,
       data: {
         jobs,
         totalJobs,
@@ -99,6 +154,7 @@ const getAllJobs = async (req, res) => {
     res.status(500).json({
       status: "failed",
       message: "Internal Server Error",
+      error: error.message
     });
   }
 };
@@ -186,6 +242,7 @@ const getJob = async (req, res) => {
   }
 };
 
+// delete a job
 const deleteJob = async (req, res) => {
   try {
     const { id: jobId } = req.params;
@@ -197,6 +254,12 @@ const deleteJob = async (req, res) => {
         message: "No job data found"
       });
     }
+
+    // const filename = req.body.fileName;
+    // if (!filename) {
+    //   res.status(400).json("File name not found")
+    //   return;
+    // }
 
     if (req.user._id.toString() !== job.createdBy.toString()) {
       return res.status(403).json({
@@ -211,6 +274,14 @@ const deleteJob = async (req, res) => {
       message: 'Job removed successfully'
     });
 
+    // delete resume on google cloud storage
+    let resume = job.resume;
+    console.log(resume);
+    let newName = resume.replace(bucketName + '/', '');
+    console.log(newName); 
+
+    await bucket.file(newName).delete();
+
   } catch (error) {
     console.error(error);
     res.status(500).json({
@@ -220,7 +291,7 @@ const deleteJob = async (req, res) => {
   }
 };
 
-//Show jon status 
+//Show job status 
 const ShowStatus = async (req, res) => {
   try {
     // Convert user ID to a Mongoose ObjectId

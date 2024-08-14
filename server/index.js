@@ -6,9 +6,27 @@ const morgon = require('morgan')
 const helmet = require('helmet')
 const mangoSanitize = require('express-mongo-sanitize');
 const hpp = require('hpp');
-const app = express() //Start APP  Middleware
 const path = require('path')
-const multer = require('./middleware/multerMiddleware')
+const multer = require('multer');
+// const upload = require('./middleware/multerMiddleware');
+// const { Storage } = require('@google-cloud/storage');
+const app = express() //Start APP  Middleware
+
+// const storage = new Storage({
+//     keyFilename: './key/key.json',
+// });
+
+// // Create a bucket instance
+// const bucketName = 'jobstruct-web-app';
+// const bucket = storage.bucket(bucketName);
+
+// // Multer middleware for handling file uploads
+// const upload = multer({
+//     storage: multer.memoryStorage(),
+//     limits: {
+//         fileSize: 5 * 1024 * 1024, // 5MB file size limit
+//     },
+// });
 
 app.use(cors()); //cors  Middleware
 // app.use('*', cors())
@@ -26,13 +44,53 @@ app.use(hpp())
 // app.use("/profile", express.static('./profile'));
 
 // Serve static files from the 'uploads' directory
-app.use("/uploads", express.static("./uploads"));
+// app.use("/uploads", express.static("./uploads"));
 // app.use('/uploads', express.static(path.join(__dirname, './uploads')));
 
-// Example route to handle file uploads
-app.post('http://localhost:8080/api/v1/jobs', multer.single('file'), (req, res) => {
-    res.json({ fileUrl: `./uploads/${req.file.filename}` }); // Return the URL to the uploaded file
-});
+// Route for handling file uploads
+// app.post('/api/v1/jobs', upload.single('resume'), async (req, res) => {
+//     try {
+//         if (!req.file) {
+//             return res.status(400).json({ message: 'No file uploaded' });
+//         }
+
+//         uploadedFile = req.file;
+//         const fileName = Date.now() + uploadedFile.originalname;
+//         const blob = bucket.file(fileName);
+
+//         // Create write stream for uploading file
+//         const blobStream = blob.createWriteStream({
+//             resumable: false,
+//             metadata: {
+//                 contentType: uploadedFile.mimetype,
+//             },
+//         });
+
+//         blobStream.on('error', (err) => {
+//             console.error('Error uploading file:', err);
+//             res.status(500).json({ error: 'Unable to upload file, please try again later' });
+//         });
+
+//         blobStream.on('finish', () => {
+//             const publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
+//             res.status(200).json({ fileUrl: publicUrl });
+//         });
+
+//         blobStream.end(uploadedFile.buffer);
+//     } catch (error) {
+//         console.error('Error uploading file:', error);
+//         res.status(500).json({ error: 'Unable to upload file, please try again later' });
+//     }
+// });
+
+// app.get('/', async (req, res) => {
+// 	try{
+// 		const [resumes] = await bucket.getFiles();
+// 		res.render('index', {resumes});
+// 	} catch (error){
+// 		res.status(500).send(error)
+// 	}
+// })
 
 //IMPORT ROUTES
 const userRoutes = require('./routes/userRoutes')

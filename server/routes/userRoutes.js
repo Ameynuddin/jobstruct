@@ -5,7 +5,7 @@ const { signUp,
     // restrictTo,
     logout } = require('../controllers/authController')
 const { getApplicationStats, updateUser } = require('../controllers/userController')
-const upload = require('../middleware/multerMiddleware')
+// const upload = require('../middleware/multerMiddleware')
 const protect = require('../middleware/authMiddleware')
 const router = express.Router() // can be router or routes, up to preference
 
@@ -14,7 +14,7 @@ router.route('/login').post(login);
 router.get('/logout', logout);
 router.get('/currentUser', protect, getCurrentUser)
 router.get('/applicationStatus', protect, getApplicationStats)
-router.patch('/updateUser', protect, upload.single('avatar'), updateUser)
+// router.patch('/updateUser', protect, upload.single('avatar'), updateUser)
 
 
 module.exports = router

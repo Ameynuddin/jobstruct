@@ -1,59 +1,35 @@
-const multer = require('multer');
-const path = require('path');
-const fs = require('fs');
+// const multer = require('multer');
+// const path = require('path');
+// const fs = require('fs');
 
 // Ensure the upload directory exists
-// const ensureDirExists = (dir) => {
-//     if (!fs.existsSync(dir)) {
-//         console.log('Upload directory does not exist, creating...');
-//         fs.mkdirSync(dir, { recursive: true });
-//     } else {
-//         console.log('Directory already exists');
-//     }
-// };
-
-// const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//         // Determine the directory based on the request
-//         let uploadDir;
-//         if (req.body.type === 'profile') {
-//             uploadDir = path.join(__dirname, '../profile');
-//         } else {
-//             uploadDir = path.join(__dirname, '../uploads');
-//         }
-
-//         // Ensure the directory exists
-//         ensureDirExists(uploadDir);
-//         cb(null, uploadDir);
-//     },
-
-//     filename: function (req, file, cb) {
-//         const uniqueSuffix = Date.now();
-//         cb(null, uniqueSuffix + file.originalname);
-//     }
-// });
+// const uploadDir = path.join(__dirname, '../uploads');
+// if (!fs.existsSync(uploadDir)) {
+//     console.log('Upload directory does not exist, creating...');
+//     fs.mkdirSync(uploadDir);
+// } else {
+//     console.log('Upload directory already existed');
+// }
 
 // Storage configuration
-// const storage = multer.diskStorage({
+// const storage = multer.memoryStorage({
 //     destination: function (req, file, cb) {
 //         cb(null, uploadDir);
 //     },
 //     filename: function (req, file, cb) {
-//         const uniqueSuffix = Date.now();
-//         cb(null, uniqueSuffix + file.originalname);
+//         const uniqueSuffix = Date.now() + file.originalname;
+//         cb(null, uniqueSuffix);
 //     }
 // });
-// upload image to database
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        return cb(null, './uploads')
-    },
-    filename: function (req, file, cb) {
-        const uniqueSuffix = Date.now();
-        return cb(null, uniqueSuffix + file.originalname);
-    }
-});
 
-const upload = multer({ storage });
+// Multer middleware for handling file uploads
+// const multerConfig = multer({
+//     storage: multer.memoryStorage(),
+//     limits: {
+//         fileSize: 5 * 1024 * 1024, // 5MB file size limit
+//     },
+// });
 
-module.exports = upload;
+// const upload = multer({ storage });
+
+// module.exports = upload;
