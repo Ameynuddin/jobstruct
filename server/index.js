@@ -28,9 +28,7 @@ const app = express() //Start APP  Middleware
 //     },
 // });
 
-app.use(cors({
-    origin: 'https://jobstruct.onrender.com'
-})); //cors  Middleware
+app.use(cors({origin: '*'})); //cors  Middleware
 // app.use('*', cors())
 // app.use(bodyparser.urlencoded({extended:true}))
 app.use(express.json())
@@ -98,7 +96,7 @@ app.use(hpp())
 const userRoutes = require('./routes/userRoutes')
 const jobRoutes = require('./routes/jobRoutes')
 //All ROUTES START HERE 
-app.get('/', (req,res) =>{
+app.get('/', (req, res) => {
     res.send("Server is running");
 })
 app.use('/api/v1/user', userRoutes);
