@@ -96,6 +96,9 @@ app.use(hpp())
 const userRoutes = require('./routes/userRoutes')
 const jobRoutes = require('./routes/jobRoutes')
 //All ROUTES START HERE 
+app.get('/', (req,res) =>{
+    res.send("Server is running");
+})
 app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/jobs', jobRoutes);
 
