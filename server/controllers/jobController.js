@@ -2,20 +2,26 @@ const { default: mongoose } = require('mongoose');
 const Job = require('../models/jobModel');
 const moment = require('moment');
 const { Storage } = require('@google-cloud/storage');
+require('dotenv').config({path:'./config.env'})
 
+const credential = JSON.parse(
+  Buffer.from(process.env.GOOGLE_SERVICE_KEY, "base64").toString()
+);
+ 
 const storage = new Storage({
-  keyFilename: {
-    "type": process.env.GOOGLE_TYPE,
-    "project_id": process.env.GOOGLE_PROJECT_ID,
-    "private_key_id": process.env.GOOGLE_PRIVATE_KEY_ID,
-    "private_key": process.env.GOOGLE_PRIVATE_KEY,
-    "client_email": process.env.GOOGLE_CLIENT_EMAIL,
-    "client_id": process.env.GOOGLE_CLIENT_ID,
-    "auth_uri": process.env.GOOGLE_AUTH_URI,
-    "token_uri": process.env.GOOGLE_TOKEN_URI,
-    "auth_provider_x509_cert_url": process.env.GOOGLE_AUTH_PROVIDER_CERT_URL,
-    "client_x509_cert_url": process.env.GOOGLE_CLIENT_CERT_URL,
-    "universe_domain": process.env.GOOGLE_UNIVERSE_DOMAIN
+  project_id: process.env.GOOGLE_PROJECT_ID,
+
+  credentials: {
+    type: credential.type,
+    private_key_id: credential.private_key_id,
+    private_key: credential.private_key,
+    client_email: credential.client_email,
+    client_id: credential.client_id,
+    auth_uri: credential.auth_uri,
+    token_uri: credential.token_uri,
+    auth_provider_x509_cert_url: credential.auth_provider_x509_cert_url,
+    client_x509_cert_url: credential.client_x509_cert_url,
+    universe_domain: credential.universe_domain
   }
 });
 
@@ -290,7 +296,7 @@ const deleteJob = async (req, res) => {
     let resume = job.resume;
     console.log(resume);
     let newName = resume.replace(bucketName + '/', '');
-    console.log(newName); 
+    console.log(newName);
 
     await bucket.file(newName).delete();
 
