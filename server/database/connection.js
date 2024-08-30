@@ -6,7 +6,7 @@ dotenv.config({path:'./.env'})
 // .then(db => console.log("Database is connected"))
 // .catch(error=> console.log("Database is not connected", error))
 
-mongoose.connect(process.env.DBURL, {
+await mongoose.connect(process.env.DBURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds
