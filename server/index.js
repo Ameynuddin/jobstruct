@@ -32,7 +32,8 @@ const app = express() //Start APP  Middleware
 //     origin: 'https://jobstruct.onrender.com',
 //     optionsSuccessStatus: 200
 //   })); //cors  Middleware
-app.use('*', cors())
+app.use(cors({ origin: '*' }));
+
 // app.use(bodyparser.urlencoded({extended:true}))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
