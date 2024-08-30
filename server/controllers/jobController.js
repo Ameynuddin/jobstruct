@@ -4,7 +4,7 @@ const moment = require('moment');
 const { Storage } = require('@google-cloud/storage');
 
 const storage = new Storage({
-  keyFilename: `${process.env.KEY_GC}`,
+  keyFilename: `./key/key.json`,
 });
 
 // Create a bucket instance
