@@ -6,10 +6,16 @@ dotenv.config({path:'./.env'})
 // .then(db => console.log("Database is connected"))
 // .catch(error=> console.log("Database is not connected", error))
 
-await mongoose.connect(process.env.DBURL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds
-})
-.then(() => console.log('Connected to MongoDB'))
-.catch(err => console.error('Error connecting to MongoDB:', err));
+async function connectToDatabase() {
+  try {
+    await mongoose.connect(process.env.DBURL, {
+      serverSelectionTimeoutMS: 30000, // Increase timeout to 30 seconds
+    });
+    console.log('Connected to MongoDB');
+  } catch (err) {
+    console.error('Error connecting to MongoDB:', err);
+  }
+}
+
+// Call the function to connect to the database
+connectToDatabase();
