@@ -2,7 +2,7 @@ const { default: mongoose } = require('mongoose');
 const Job = require('../models/jobModel');
 const moment = require('moment');
 const { Storage } = require('@google-cloud/storage');
-require('dotenv').config({path:'./config.env'})
+require('dotenv').config({path:'./.env'})
 
 const credential = JSON.parse(
   Buffer.from(process.env.GOOGLE_SERVICE_KEY, "base64").toString()
