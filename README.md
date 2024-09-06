@@ -51,13 +51,12 @@ The Job Tracker Web App is designed to help job seekers efficiently manage and t
 
 3.  **Set up Google Cloud Storage:**
 
-    Create new project, VM instance, service account and bucket storage. From service accounts, create and download private key (JSON key).
+    On Google Cloud console, create new project, VM instance, service account and bucket storage. From service accounts, create and download private key (JSON key).
 
-4. **Base64 Encode JSON Key:**
+5. **Base64 Encode JSON Key:**
     Run this command in the directory where JSON key is located.
    ```
     cat key.json | base64
-
     ```
     Copy the base64-encoded string to `.env` file.
     
