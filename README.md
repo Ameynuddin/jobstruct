@@ -86,38 +86,38 @@ The Job Tracker Web App is designed to help job seekers efficiently manage and t
    
    ![dark_mode](client/public/output/dark_mode.png)
    
-3. **Sign Up / Log In:**
+2. **Sign Up / Log In:**
    Create a new account or log in with your existing credentials.
 
    ![register](client/public/output/register.png)
    
    ![sign_in](client/public/output/sign_in.png)
-
-4.**Dashboard:**
+   
+3. **Dashboard:**
    The dashboard presents the statistics of total jobs applied and applications pending, declined and scheduled for interview.
    
    ![dashboard](client/public/output/dashboard.png)
    
-5. **Add Job Applications:**
+4. **Add Job Applications:**
    Input your job applications manually, customizing the fields as needed.
 
     ![add_job](client/public/output/add_job.png)
 
-6. **Upload Resumes:**
+5. **Upload Resumes:**
    Upload and store your resumes securely on Google Cloud storage using bucket.
 
-7. **Track Progress:**
+6. **Track Progress:**
    Use advanced sorting and filtering options to manage your applications.
     ![all_jobs](client/public/output/all_jobs.png)
 
-9. **User Profile:**
+7. **User Profile:**
    Manage user information, such as, avatar, name and email.
    ![profile](client/public/output/profile.png)
    
-11. **Set Reminders:** (pending feature)
+8. **Set Reminders:** (pending feature)
    Integrate with Google Calendar to set reminders for important dates.
 
-12. **Receive Notifications:** (pending feature)
+9. **Receive Notifications:** (pending feature)
    Enable SMS or email notifications for reminders and updates.
 
 ## Contributing
