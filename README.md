@@ -55,7 +55,7 @@ The Job Tracker Web App is designed to help job seekers efficiently manage and t
 
     ```env
     PORT=8080
-    DBURL=mongodb://0.0.0.0:27017/jobtrack
+    DBURL=your_mongodb_url
     JWT_SECRET=your_jwt_secret_key
     GOOGLE_CLOUD_PROJECT_ID=your_google_cloud_project_id
     GOOGLE_CLOUD_KEYFILE_PATH=path_to_your_google_cloud_keyfile.json
@@ -77,24 +77,45 @@ The Job Tracker Web App is designed to help job seekers efficiently manage and t
 
     Open your browser and navigate to `http://localhost:8080`.
 
-## Usage
+## Usage/Screen
 
-1. **Sign Up / Log In:**
+1. **Homepage:**
+   Homepage comes with light and dark mode toggle and the option to register or log in.
+
+   ![homepage](client/public/output/homepage.png)
+   ![dark_mode](client/public/output/dark_mode.png)
+   
+3. **Sign Up / Log In:**
    Create a new account or log in with your existing credentials.
 
-2. **Add Job Applications:**
+   ![register](client/public/output/register.png)
+   ![sign_in](client/public/output/sign_in.png)
+
+4.**Dashboard:**
+   The dashboard presents the statistics of total jobs applied and applications pending, declined and scheduled for interview.
+   
+![dashboard](client/public/output/dashboard.png)
+   
+5. **Add Job Applications:**
    Input your job applications manually, customizing the fields as needed.
 
-3. **Set Reminders:**
+    ![add_job](client/public/output/add_job.png)
+
+6. **Upload Resumes:**
+   Upload and store your resumes securely on Google Cloud storage using bucket.
+
+7. **Track Progress:**
+   Use advanced sorting and filtering options to manage your applications.
+    ![all_jobs](client/public/output/all_jobs.png)
+
+9. **User Profile:**
+   Manage user information, such as, avatar, name and email.
+   ![profile](client/public/output/profile.png)
+   
+11. **Set Reminders:** (pending feature)
    Integrate with Google Calendar to set reminders for important dates.
 
-4. **Upload Resumes:**
-   Upload and store your resumes securely on Google Cloud.
-
-5. **Track Progress:**
-   Use advanced sorting and filtering options to manage your applications.
-
-6. **Receive Notifications:**
+12. **Receive Notifications:** (pending feature)
    Enable SMS or email notifications for reminders and updates.
 
 ## Contributing
