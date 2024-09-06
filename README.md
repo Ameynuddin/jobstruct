@@ -83,18 +83,20 @@ The Job Tracker Web App is designed to help job seekers efficiently manage and t
    Homepage comes with light and dark mode toggle and the option to register or log in.
 
    ![homepage](client/public/output/homepage.png)
+   
    ![dark_mode](client/public/output/dark_mode.png)
    
 3. **Sign Up / Log In:**
    Create a new account or log in with your existing credentials.
 
    ![register](client/public/output/register.png)
+   
    ![sign_in](client/public/output/sign_in.png)
 
 4.**Dashboard:**
    The dashboard presents the statistics of total jobs applied and applications pending, declined and scheduled for interview.
    
-![dashboard](client/public/output/dashboard.png)
+   ![dashboard](client/public/output/dashboard.png)
    
 5. **Add Job Applications:**
    Input your job applications manually, customizing the fields as needed.
