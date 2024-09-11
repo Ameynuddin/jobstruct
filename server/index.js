@@ -34,9 +34,9 @@ const app = express() //Start APP  Middleware
 //   })); //cors  Middleware
 // app.use(cors({ origin: '*' }));
 app.use(cors({
-    origin: 'https://jobstruct.onrender.com',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    // origin: 'https://jobstruct.onrender.com',
+    // methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    // allowedHeaders: ['Content-Type', 'Authorization']
   }));
 
 // app.use(bodyparser.urlencoded({extended:true}))
