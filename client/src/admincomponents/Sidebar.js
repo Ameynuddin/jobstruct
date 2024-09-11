@@ -5,8 +5,7 @@ import { IoIosAddCircle } from "react-icons/io";
 import { FaSuitcase } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
-
-
+import { FaPowerOff } from "react-icons/fa6";
 
 function NavButton({ to, icon, label }) {
   const location = useLocation();
@@ -18,10 +17,10 @@ function NavButton({ to, icon, label }) {
         className={`
           font-bold transition-all 
           disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
-          text-xs py-3 rounded-lg text-white w-full flex items-center gap-4 px-4 capitalize
+          text-xs py-3 rounded-lg w-full flex items-center gap-4 px-4 capitalize
           ${isActive
-            ? 'bg-white/10'
-            : 'hover:bg-white/10 active:bg-white/30'}
+            ? 'text-white bg-white/10'
+            : 'text-white/50 hover:bg-white/10 active:bg-white/30'}
         `}
         type="button"
       >
@@ -94,7 +93,6 @@ function Sidebar() {
             <li className="mx-3.5 mt-4 mb-2">
               <p className="block antialiased text-sm leading-normal text-white font-black uppercase opacity-75">Setting</p>
             </li>
-
             <li>
               <NavButton
                 to="/updateprofile"
@@ -103,6 +101,14 @@ function Sidebar() {
                 }
               />
             </li>
+            <li>
+              <NavButton
+                to="/"
+                label="Sign Out"
+                icon={<FaPowerOff fontSize={20} className='text-red-400' />}
+              />
+            </li>
+
           </ul>
         </div>
       </aside>
