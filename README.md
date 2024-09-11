@@ -49,53 +49,82 @@ The Job Tracker Web App is designed to help job seekers efficiently manage and t
     npm install
     ```
 
-3. **Set up environment variables:**
+3.  **Set up Google Cloud Storage:**
+
+    On Google Cloud console, create new project, VM instance, service account and bucket storage. From service accounts, create and download private key (JSON key).
+
+5. **Base64 Encode JSON Key:**
+    Run this command in the directory where JSON key is located.
+   ```
+    cat key.json | base64
+    ```
+    Copy the base64-encoded string to `.env` file.
+    
+6.  **Set up environment variables:**
 
     Create a `.env` file in the root directory and add the following variables:
 
     ```env
     PORT=8080
-    DBURL=mongodb://0.0.0.0:27017/jobtrack
+    DBURL=your_mongodb_url
     JWT_SECRET=your_jwt_secret_key
-    GOOGLE_CLOUD_PROJECT_ID=your_google_cloud_project_id
-    GOOGLE_CLOUD_KEYFILE_PATH=path_to_your_google_cloud_keyfile.json
-    TWILIO_ACCOUNT_SID=your_twilio_account_sid
-    TWILIO_AUTH_TOKEN=your_twilio_auth_token
-    TWILIO_PHONE_NUMBER=your_twilio_phone_number
-    GOOGLE_CLIENT_ID=your_google_client_id
-    GOOGLE_CLIENT_SECRET=your_google_client_secret
-    GOOGLE_REFRESH_TOKEN=your_google_refresh_token
+    GOOGLE_PROJECT_ID=your_project_id_on_google_cloud
+    GOOGLE_SERVICE_KEY=base64_encoded_string
+    
     ```
 
-4. **Run the application:**
+7. **Run the application:**
 
     ```sh
     npm start
     ```
 
-5. **Access the app:**
+8. **Access the app:**
 
     Open your browser and navigate to `http://localhost:8080`.
 
-## Usage
+## Usage/Screen
 
-1. **Sign Up / Log In:**
+1. **Homepage:**
+   Homepage comes with light and dark mode toggle and the option to register or log in.
+
+   ![homepage](client/public/output/homepage.png)
+   
+   ![dark_mode](client/public/output/dark_mode.png)
+   
+2. **Sign Up / Log In:**
    Create a new account or log in with your existing credentials.
 
-2. **Add Job Applications:**
+   ![register](client/public/output/register.png)
+   
+   ![sign_in](client/public/output/sign_in.png)
+   
+3. **Dashboard:**
+   The dashboard presents the statistics of total jobs applied and applications pending, declined and scheduled for interview.
+   
+   ![dashboard](client/public/output/dashboard.png)
+   
+4. **Add Job Applications:**
    Input your job applications manually, customizing the fields as needed.
 
-3. **Set Reminders:**
-   Integrate with Google Calendar to set reminders for important dates.
+    ![add_job](client/public/output/add_job.png)
 
-4. **Upload Resumes:**
-   Upload and store your resumes securely on Google Cloud.
+5. **Upload Resumes:**
+   Upload and store your resumes securely on Google Cloud storage using bucket.
 
-5. **Track Progress:**
+6. **Track Progress:**
    Use advanced sorting and filtering options to manage your applications.
+    ![all_jobs](client/public/output/all_jobs.png)
 
-6. **Receive Notifications:**
-   Enable SMS or email notifications for reminders and updates.
+7. **User Profile:**
+   Manage user information, such as, avatar, name and email.
+   ![profile](client/public/output/profile.png)
+   
+8. **Set Reminders:** 
+   Integrate with Google Calendar to set reminders for important dates. (pending feature)
+
+9. **Receive Notifications:** 
+   Enable SMS or email notifications for reminders and updates. (pending feature)
 
 ## Contributing
 
