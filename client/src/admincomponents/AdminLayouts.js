@@ -1,7 +1,7 @@
 import React from 'react'
 import Adminaside from './Sidebar'
 import AdminNavbar from './AdminNavbar'
-import Adminfooter from './Adminfooter'
+import AdminFooter from './AdminFooter'
 
 const AdminLayouts = ({ children }) => {
   return (
@@ -11,7 +11,7 @@ const AdminLayouts = ({ children }) => {
         <div className="p-4 xl:ml-80 bg-sky-200">
           <AdminNavbar />
           {children}
-          <Adminfooter />
+          <AdminFooter />
         </div>
       </div>
     </>
