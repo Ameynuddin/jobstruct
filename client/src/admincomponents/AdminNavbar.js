@@ -68,14 +68,27 @@ const AdminNavbar = () => {
             >
               <div className="px-3 py-2 leading-8">
                 <strong className='text-gray-600 text-base'>Messages</strong>
-                <p className="text-black/75">No messages available.</p>
+                <p className="text-black/75">No new messages.</p>
               </div>
-
             </PopoverPanel>
           </Popover>
 
+          <Popover>
+            <PopoverButton className="block focus:outline-none data-[active]:bg-gray-100 p-1.5 rounded">
+              <IoMdNotificationsOutline fontSize={20} />
+            </PopoverButton>
+            <PopoverPanel
+              transition
+              anchor="bottom"
+              className="absolute -translate-x-32 w-72 mt-2 rounded-sm bg-white/85 shadow-md ring-1 ring-black/5 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-2 data-[closed]:opacity-0"
+            >
+              <div className="px-3 py-2 leading-8">
+                <strong className='text-gray-600 text-base'>Notifications</strong>
+                <p className="text-black/75">You're all caught up!.</p>
+              </div>
+            </PopoverPanel>
+          </Popover>
 
-          <IoMdNotificationsOutline fontSize={20} />
         </div>
 
         {/* Profile */}
