@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Adminfooter = () => {
+const AdminFooter = () => {
   return (
     <>
       <div class="text-blue-gray-600">
@@ -27,4 +27,4 @@ const Adminfooter = () => {
   )
 }
 
-export default Adminfooter
+export default AdminFooter
