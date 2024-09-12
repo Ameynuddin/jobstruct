@@ -4,6 +4,9 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { IoLogOutOutline } from "react-icons/io5";
 import { IoIosSearch } from "react-icons/io";
+import { IoChatboxEllipsesOutline } from "react-icons/io5";
+import { IoMdNotificationsOutline } from "react-icons/io";
+
 
 const AdminNavbar = () => {
   const { LogoutAPI, CurrentUser } = useData()
@@ -52,6 +55,11 @@ const AdminNavbar = () => {
           <IoIosSearch fontSize={20} className='text-gray-400 absolute translate-x-2.5' />
           <input type="text" placeholder="Search..." className='text-sm focus:outline-none active:outline-none h-10 w-[24rem] border border-gray-300 rounded pl-10 pr-4' />
           {/* <button type="button">Search</button> */}
+        </div>
+
+        <div className='flex items-center gap-2'>
+          <IoChatboxEllipsesOutline fontSize={20}/>
+          <IoMdNotificationsOutline fontSize={20}/>
         </div>
 
         {/* Profile */}
