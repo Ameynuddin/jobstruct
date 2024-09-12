@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useData } from '../API/ApiContext'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { IoLogOutOutline } from "react-icons/io5";
-import { IoIosSearch } from "react-icons/io";
-import { IoChatboxEllipsesOutline } from "react-icons/io5";
-import { IoMdNotificationsOutline } from "react-icons/io";
+import { IoLogOutOutline, IoChatboxEllipsesOutline } from "react-icons/io5";
+import { IoIosSearch, IoMdNotificationsOutline } from "react-icons/io";
+import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
 
 
 const AdminNavbar = () => {
@@ -58,8 +57,25 @@ const AdminNavbar = () => {
         </div>
 
         <div className='flex items-center gap-2'>
-          <IoChatboxEllipsesOutline fontSize={20}/>
-          <IoMdNotificationsOutline fontSize={20}/>
+          <Popover>
+            <PopoverButton className="block focus:outline-none data-[active]:bg-gray-100 p-1.5 rounded">
+              <IoChatboxEllipsesOutline fontSize={20} />
+            </PopoverButton>
+            <PopoverPanel
+              transition
+              anchor="bottom"
+              className="absolute -translate-x-32 w-72 mt-2 rounded-sm bg-white/85 shadow-md ring-1 ring-black/5 text-sm/6 transition duration-200 ease-in-out [--anchor-gap:var(--spacing-5)] data-[closed]:-translate-y-2 data-[closed]:opacity-0"
+            >
+              <div className="px-3 py-2 leading-8">
+                <strong className='text-gray-600 text-base'>Messages</strong>
+                <p className="text-black/75">No messages available.</p>
+              </div>
+
+            </PopoverPanel>
+          </Popover>
+
+
+          <IoMdNotificationsOutline fontSize={20} />
         </div>
 
         {/* Profile */}

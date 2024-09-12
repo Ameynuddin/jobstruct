@@ -6,9 +6,9 @@ import AdminFooter from './AdminFooter'
 const AdminLayouts = ({ children }) => {
   return (
     <>
-      <div className="min-h-screen bg-red-200">
+      <div className="min-h-screen">
         <Adminaside />
-        <div className="p-4 xl:ml-80 bg-sky-200">
+        <div className="p-4 xl:ml-80">
           <AdminNavbar />
           {children}
           <AdminFooter />
