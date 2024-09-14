@@ -290,6 +290,7 @@ export const ApiProvider = ({ children }) => {
         }
     }
 
+    // 10) Get Current User
     const CurrentUser = async () => {
         try {
             const res = await fetch(`${API_URL}/api/v1/user/currentUser`, {
