@@ -4,14 +4,15 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { IoLogOutOutline, IoChatboxEllipsesOutline } from "react-icons/io5";
 import { IoIosSearch, IoMdNotificationsOutline } from "react-icons/io";
-import { Popover, PopoverButton, PopoverPanel } from '@headlessui/react';
+import { Popover, PopoverButton, PopoverPanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import { FaUserCircle } from "react-icons/fa";
 
 
 const AdminNavbar = () => {
   const { LogoutAPI, CurrentUser } = useData()
   const [currentUser, setcurrentUser] = useState([])
-  const Logout = async () => {
 
+  const Logout = async () => {
     const res = await LogoutAPI();
     if (res.success) {
       toast.success("User logout successfully", {
@@ -24,15 +25,17 @@ const AdminNavbar = () => {
       console.log('Logout failed: ' + res.error || res.message);
     }
   };
+
   //getCurrent User 
-  const getCurrentUSer = async () => {
+  const getCurrentUser = async () => {
     try {
       const res = await CurrentUser()
       if (res.success) {
         const { data } = res;
         console.log(data)
-        setcurrentUser(data.data.currentUser)
-
+        const name = data.data.currentUser.name;
+        const initials = getInitials(name);
+        setcurrentUser(initials);
       } else {
         console.error(res.message || res.error);
       }
@@ -41,10 +44,22 @@ const AdminNavbar = () => {
       console.error('An error occurred while fetching the current user:', error);
     }
   }
+
+  const getInitials = (name) => {
+    const nameParts = name.split(' ');
+    const first_letter = nameParts[0].substring(0, 1).toUpperCase();
+
+    if (nameParts.length > 1) {
+      first_letter += nameParts[nameParts.length - 1].substring(0, 1).toUpperCase();
+    }
+
+    return first_letter;
+  }
+
   useEffect(() => {
-    getCurrentUSer()
+    getCurrentUser()
   }, [])
-  console.log(`http://127.0.0.1:8080/uploads/${currentUser.avatar}`)
+  // console.log(`http://127.0.0.1:8080/uploads/${currentUser.avatar}`)
 
   return (
     <>
@@ -56,7 +71,8 @@ const AdminNavbar = () => {
           {/* <button type="button">Search</button> */}
         </div>
 
-        <div className='flex items-center gap-2'>
+        <div className='flex items-center gap-1 mr-2'>
+          {/* Messages */}
           <Popover>
             <PopoverButton className="block focus:outline-none data-[active]:bg-gray-100 p-1.5 rounded">
               <IoChatboxEllipsesOutline fontSize={20} />
@@ -73,6 +89,7 @@ const AdminNavbar = () => {
             </PopoverPanel>
           </Popover>
 
+          {/* Notifications */}
           <Popover>
             <PopoverButton className="block focus:outline-none data-[active]:bg-gray-100 p-1.5 rounded">
               <IoMdNotificationsOutline fontSize={20} />
@@ -89,31 +106,48 @@ const AdminNavbar = () => {
             </PopoverPanel>
           </Popover>
 
-        </div>
+          {/* Profile */}
+          <Menu>
+            <MenuButton className="inline-flex items-center gap-2 rounded-md bg-gray-200 py-1.5 px-2 text-sm/6 text-gray-800 shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-100 data-[open]:bg-gray-100 data-[focus]:outline-1 data-[focus]:outline-white">
+              {/* <img
+                crossOrigin="anonymous"
+                className="w-10 h-10 rounded-full"
+                // src={`http://127.0.0.1:8080/uploads/${currentUser.avatar}`}
+                alt="Rounded avatar"
+              /> */}
+              <FaUserCircle fontSize={20} />
+              {currentUser}
+            </MenuButton>
 
-        {/* Profile */}
-        <div>
-          <button
-            className=""
-            type="button"
-          >
-            <img
-              crossOrigin="anonymous"
-              className="w-10 h-10 rounded-full"
-              // src={`http://127.0.0.1:8080/uploads/${currentUser.avatar}`}
-              alt="Rounded avatar"
-            />
-            {currentUser.name}
-          </button>
-        </div>
+            <MenuItems
+              transition
+              anchor="bottom end"
+              className="w-52 origin-top-right rounded-xl border border-white/5 bg-gray-100/80 p-1 text-sm/6 text-black/75 transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+            >
+              <MenuItem>
+                <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/85">
+                  Profile
+                </button>
+              </MenuItem>
+              <MenuItem>
+                <button onClick={Logout} className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/85">
+                  Logout
+                </button>
+              </MenuItem>
+            </MenuItems>
+          </Menu>
 
-        {/* logout */}
-        <div>
+          {/* logout */}
+          {/* <div>
           <button onClick={Logout} type="button">
             <IoLogOutOutline />
             Logout
           </button>
+        </div> */}
+
         </div>
+
+
       </nav>
     </>
   )
