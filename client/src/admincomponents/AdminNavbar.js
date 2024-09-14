@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useData } from '../API/ApiContext'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { Link } from 'react-router-dom';
 import { IoLogOutOutline, IoChatboxEllipsesOutline } from "react-icons/io5";
 import { IoIosSearch, IoMdNotificationsOutline } from "react-icons/io";
 import { Popover, PopoverButton, PopoverPanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
@@ -122,12 +123,14 @@ const AdminNavbar = () => {
             <MenuItems
               transition
               anchor="bottom end"
-              className="w-52 origin-top-right rounded-xl border border-white/5 bg-gray-100/80 p-1 text-sm/6 text-black/75 transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
+              className="w-52 origin-top-right rounded-xl border border-white/5 bg-gray-100/80 p-1 text-sm/6 text-black/90 transition duration-100 ease-out [--anchor-gap:var(--spacing-1)] focus:outline-none data-[closed]:scale-95 data-[closed]:opacity-0"
             >
               <MenuItem>
-                <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/85">
-                  Profile
-                </button>
+                <Link to='/updateprofile' className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/85">
+                  <button>
+                    Profile
+                  </button>
+                </Link>
               </MenuItem>
               <MenuItem>
                 <button onClick={Logout} className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/85">
