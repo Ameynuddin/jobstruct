@@ -6,6 +6,7 @@ import { FaSuitcase } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { FaPowerOff } from "react-icons/fa6";
+import { useData } from '../API/ApiContext'
 
 function NavButton({ to, icon, label }) {
   const location = useLocation();
@@ -35,9 +36,23 @@ function NavButton({ to, icon, label }) {
 
 function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  // logout
+  const Logout = async () => {
+    const res = await LogoutAPI();
+    if (res.success) {
+      toast.success("User logout successfully", {
+        position: "top-center"
+      });
+    } else {
+      toast.error("Logout failed", {
+        position: "top-center"
+      })
+      console.log('Logout failed: ' + res.error || res.message);
+    }
   };
 
   return (
@@ -103,7 +118,7 @@ function Sidebar() {
             </li>
             <li>
               <NavButton
-                to="/"
+                onClick={Logout}
                 label="Sign Out"
                 icon={<FaPowerOff fontSize={20} className='text-red-400' />}
               />
