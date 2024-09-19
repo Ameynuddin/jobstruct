@@ -142,7 +142,7 @@ function Sidebar() {
             </li>
             <li>
               <NavButton
-                onClick="{Logout}"
+                onClick="true"
                 label="Sign Out"
                 icon={<FaPowerOff fontSize={20} className='text-red-400' />}
               />
