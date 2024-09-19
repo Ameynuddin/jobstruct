@@ -8,10 +8,32 @@ import { IoMenu } from "react-icons/io5";
 import { FaPowerOff } from "react-icons/fa6";
 import { useData } from '../API/ApiContext'
 
-function NavButton({ to, icon, label }) {
+function NavButton({ to, icon, label, onClick }) {
   const location = useLocation();
   const isActive = location.pathname === to;
 
+  if (onClick) {
+    return (
+      <button
+        onClick={onClick}
+        className={`
+          font-bold transition-all 
+          disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
+          text-xs py-3 rounded-lg w-full flex items-center gap-4 px-4 capitalize
+          ${isActive
+            ? 'text-white bg-white/10'
+            : 'text-white/50 hover:bg-white/10 active:bg-white/30'}
+        `}
+        type="button"
+      >
+        {icon}
+        <p className="block antialiased text-base leading-relaxed text-inherit font-medium capitalize">
+          {label}
+        </p>
+      </button>
+    )
+  }
+  
   return (
     <Link to={to} className={isActive ? 'active' : ''}>
       <button
