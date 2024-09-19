@@ -49,28 +49,30 @@ function NavButton({ to, icon, label, onClick }) {
         </p>
       </button>
     )
+  } else {
+    return (
+      <Link to={to} className={isActive ? 'active' : ''}>
+        <button
+          className={`
+            font-bold transition-all 
+            disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
+            text-xs py-3 rounded-lg w-full flex items-center gap-4 px-4 capitalize
+            ${isActive
+              ? 'text-white bg-white/10'
+              : 'text-white/50 hover:bg-white/10 active:bg-white/30'}
+          `}
+          type="button"
+        >
+          {icon}
+          <p className="block antialiased text-base leading-relaxed text-inherit font-medium capitalize">
+            {label}
+          </p>
+        </button>
+      </Link>
+    );
   }
 
-  return (
-    <Link to={to} className={isActive ? 'active' : ''}>
-      <button
-        className={`
-          font-bold transition-all 
-          disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
-          text-xs py-3 rounded-lg w-full flex items-center gap-4 px-4 capitalize
-          ${isActive
-            ? 'text-white bg-white/10'
-            : 'text-white/50 hover:bg-white/10 active:bg-white/30'}
-        `}
-        type="button"
-      >
-        {icon}
-        <p className="block antialiased text-base leading-relaxed text-inherit font-medium capitalize">
-          {label}
-        </p>
-      </button>
-    </Link>
-  );
+
 }
 
 function Sidebar() {
