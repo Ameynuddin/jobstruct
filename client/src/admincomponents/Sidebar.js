@@ -12,10 +12,27 @@ function NavButton({ to, icon, label, onClick }) {
   const location = useLocation();
   const isActive = location.pathname === to;
 
+  // logout
+  const { LogoutAPI } = useData()
+
+  const Logout = async () => {
+    const res = await LogoutAPI();
+    if (res.success) {
+      toast.success("User logout successfully", {
+        position: "top-center"
+      });
+    } else {
+      toast.error("Logout failed", {
+        position: "top-center"
+      })
+      console.log('Logout failed: ' + res.error || res.message);
+    }
+  };
+
   if (onClick) {
     return (
       <button
-        onClick={onClick}
+        onClick={Logout}
         className={`
           font-bold transition-all 
           disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
@@ -33,7 +50,7 @@ function NavButton({ to, icon, label, onClick }) {
       </button>
     )
   }
-  
+
   return (
     <Link to={to} className={isActive ? 'active' : ''}>
       <button
@@ -60,23 +77,6 @@ function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  // logout
-  const { LogoutAPI } = useData()
-
-  const Logout = async () => {
-    const res = await LogoutAPI();
-    if (res.success) {
-      toast.success("User logout successfully", {
-        position: "top-center"
-      });
-    } else {
-      toast.error("Logout failed", {
-        position: "top-center"
-      })
-      console.log('Logout failed: ' + res.error || res.message);
-    }
   };
 
   return (
