@@ -13,21 +13,21 @@ function NavButton({ to, icon, label, onClick }) {
   const isActive = location.pathname === to;
 
   // logout
-  const { LogoutAPI } = useData()
+  // const { LogoutAPI } = useData()
 
-  const Logout = async () => {
-    const res = await LogoutAPI();
-    if (res.success) {
-      toast.success("User logout successfully", {
-        position: "top-center"
-      });
-    } else {
-      toast.error("Logout failed", {
-        position: "top-center"
-      })
-      console.log('Logout failed: ' + res.error || res.message);
-    }
-  };
+  // const Logout = async () => {
+  //   const res = await LogoutAPI();
+  //   if (res.success) {
+  //     toast.success("User logout successfully", {
+  //       position: "top-center"
+  //     });
+  //   } else {
+  //     toast.error("Logout failed", {
+  //       position: "top-center"
+  //     })
+  //     console.log('Logout failed: ' + res.error || res.message);
+  //   }
+  // };
 
   // if (onClick) {
   //   return (
@@ -54,7 +54,7 @@ function NavButton({ to, icon, label, onClick }) {
   return (
     <Link to={to} className={isActive ? 'active' : ''}>
       <button
-        onClick={onClick}
+        // onClick={onClick}
         className={`
           font-bold transition-all 
           disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
@@ -143,7 +143,8 @@ function Sidebar() {
             </li>
             <li>
               <NavButton
-                onClick="{Logout}"
+                // onClick="{Logout}"
+                to="/"
                 label="Sign Out"
                 icon={<FaPowerOff fontSize={20} className='text-red-400' />}
               />
