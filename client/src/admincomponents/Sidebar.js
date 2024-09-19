@@ -29,10 +29,32 @@ function NavButton({ to, icon, label, onClick }) {
     }
   };
 
-  if (onClick) {
-    return (
+  // if (onClick) {
+  //   return (
+  //     <button
+  //       onClick={Logout}
+  //       className={`
+  //         font-bold transition-all 
+  //         disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
+  //         text-xs py-3 rounded-lg w-full flex items-center gap-4 px-4 capitalize
+  //         ${isActive
+  //           ? 'text-white bg-white/10'
+  //           : 'text-white/50 hover:bg-white/10 active:bg-white/30'}
+  //       `}
+  //       type="button"
+  //     >
+  //       {icon}
+  //       <p className="block antialiased text-base leading-relaxed text-inherit font-medium capitalize">
+  //         {label}
+  //       </p>
+  //     </button>
+  //   )
+  // } 
+
+  return (
+    <Link to={to} className={isActive ? 'active' : ''}>
       <button
-        onClick={Logout}
+        onClick={onClick}
         className={`
           font-bold transition-all 
           disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
@@ -48,31 +70,8 @@ function NavButton({ to, icon, label, onClick }) {
           {label}
         </p>
       </button>
-    )
-  } else {
-    return (
-      <Link to={to} className={isActive ? 'active' : ''}>
-        <button
-          className={`
-            font-bold transition-all 
-            disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
-            text-xs py-3 rounded-lg w-full flex items-center gap-4 px-4 capitalize
-            ${isActive
-              ? 'text-white bg-white/10'
-              : 'text-white/50 hover:bg-white/10 active:bg-white/30'}
-          `}
-          type="button"
-        >
-          {icon}
-          <p className="block antialiased text-base leading-relaxed text-inherit font-medium capitalize">
-            {label}
-          </p>
-        </button>
-      </Link>
-    );
-  }
-
-
+    </Link>
+  );
 }
 
 function Sidebar() {
@@ -144,7 +143,7 @@ function Sidebar() {
             </li>
             <li>
               <NavButton
-                onClick="true"
+                onClick="{Logout}"
                 label="Sign Out"
                 icon={<FaPowerOff fontSize={20} className='text-red-400' />}
               />
