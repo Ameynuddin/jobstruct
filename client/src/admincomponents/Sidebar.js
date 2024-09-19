@@ -41,6 +41,8 @@ function Sidebar() {
   };
 
   // logout
+  const { LogoutAPI } = useData()
+
   const Logout = async () => {
     const res = await LogoutAPI();
     if (res.success) {
