@@ -2,6 +2,7 @@ import React from 'react'
 import Layouts from '../components/Layouts'
 import img from '../asset/img.jpg'
 import { Link } from 'react-router-dom'
+
 const Home = () => {
   return (
     <Layouts>
