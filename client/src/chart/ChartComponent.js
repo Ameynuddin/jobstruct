@@ -4,6 +4,7 @@ import Chart from 'chart.js/auto';
 const ChartComponent = ({ monthlyApplications }) => {
   const chartRef = useRef(null);
   const myChartRef = useRef(null);
+
   useEffect(() => {
     if (monthlyApplications && monthlyApplications.length > 0) {
       const labels = monthlyApplications.map(app => app.date);
@@ -44,6 +45,7 @@ const ChartComponent = ({ monthlyApplications }) => {
       });
     }
   }, [monthlyApplications]);
+  
   return (
     <>
       <div className="w-full flex flex-col items-center">
