@@ -26,7 +26,7 @@ const signUp = async (req, res) => {
             });
         }
         // Check if all fields are filled
-        if (!name || !email || !password || !passwordConfirm ) {
+        if (!name || !email || !password || !passwordConfirm) {
             return res.status(400).json({
                 status: "Failure",
                 message: "All fields are required"
@@ -49,7 +49,7 @@ const signUp = async (req, res) => {
             name,
             email,
             password: hashedPassword,
-            passwordConfirm,
+            // passwordConfirm,
         });
 
         // sendMail(email,"Wellcome to our Jobtrack App",`Hi ${name}, thank you for registering. We hope you enjoy our services!`)
@@ -83,7 +83,7 @@ const signUp = async (req, res) => {
         console.log(error)
         res.status(500).json({
             status: "User not created",
-            message: "Server error", 
+            message: "Server error",
             error,
         })
     }
@@ -166,7 +166,7 @@ const login = async (req, res) => {
         console.log("Error during login process:", error);
         res.status(500).json({
             status: "User Not Created",
-            message: "Server Error", 
+            message: "Server Error",
             error
         })
 

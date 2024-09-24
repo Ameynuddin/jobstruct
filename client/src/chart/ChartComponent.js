@@ -1,4 +1,4 @@
-import React, { useEffect , useRef} from 'react';
+import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
 const ChartComponent = ({ monthlyApplications }) => {
@@ -36,25 +36,25 @@ const ChartComponent = ({ monthlyApplications }) => {
           scales: {
             y: {
               beginAtZero: true,
-            ticks: {
-                stepSize: Math.ceil(Math.max(...counts) / 12) 
-            }
+              ticks: {
+                stepSize: Math.ceil(Math.max(...counts) / 12)
+              }
             }
           }
         }
       });
     }
   }, [monthlyApplications]);
-  
+
   return (
     <>
       <div className="w-full flex flex-col items-center">
-      <div className="w-full max-w-6xl">
-        <canvas ref={chartRef} className="w-full h-96"></canvas>
+        <div className="w-full max-w-6xl">
+          <canvas ref={chartRef} className="w-full h-96"></canvas>
+        </div>
       </div>
-    </div>
     </>
   )
 }
 
-export default ChartComponent
+export default ChartComponent;

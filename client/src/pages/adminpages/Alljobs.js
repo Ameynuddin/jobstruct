@@ -211,9 +211,9 @@ const Alljobs = () => {
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <div className="flex items-center">
                       <Link to={"/editjob/" + job._id} className="text-cyan-600 hover:text-cyan-900 mr-2">
-                      <i class='fa fa-edit'></i></Link>
+                        <i class='fa fa-edit'></i></Link>
                       <button onClick={() => deleteJob(job._id)} className="text-cyan-600 hover:text-cyan-900">
-                      <i class='fa fa-trash-o'></i></button>
+                        <i class='fa fa-trash-o'></i></button>
                     </div>
                   </td>
 
