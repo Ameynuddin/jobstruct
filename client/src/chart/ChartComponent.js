@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
 const ChartComponent = ({ monthlyApplications }) => {
-  const chartRef = useRef(null);
-  const myChartRef = useRef(null);
+  const chartRef = useRef(null); //ref to <canvas> element
+  const myChartRef = useRef(null); //holds chart instance
 
   useEffect(() => {
     if (monthlyApplications && monthlyApplications.length > 0) {
@@ -12,7 +12,7 @@ const ChartComponent = ({ monthlyApplications }) => {
 
       const ctx = chartRef.current.getContext('2d');
 
-      // Destroy previous chart instance if it exists
+      // Destroy previous chart instance if it exists to avoid memory leaks
       if (myChartRef.current) {
         myChartRef.current.destroy();
       }
@@ -21,10 +21,10 @@ const ChartComponent = ({ monthlyApplications }) => {
       myChartRef.current = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: labels,
+          labels: labels, // x-axis labels
           datasets: [{
             label: 'Monthly Applications',
-            data: counts,
+            data: counts, // y-axis data
             backgroundColor: 'rgba(54, 162, 235, 0.5)',
             borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 1,
