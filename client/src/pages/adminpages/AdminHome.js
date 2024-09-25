@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import AdminLayouts from '../../admincomponents/AdminLayouts';
 import { useData } from '../../API/ApiContext';
 import ChartComponent from '../../chart/ChartComponent';
+import BarChart from '../../chart/BarChart';
 
 const DataBox = ({ title, count, gradientFrom, gradientTo, svgPath }) => {
   return (
@@ -28,7 +29,9 @@ const AdminHome = () => {
     const res = await StateJobAPI()
     if (res.success) {
       const { data } = res;
-      console.log(data)
+      // console.log(data)
+      console.log(defaultStats);
+      console.log(monthlyApplications);
       setdefaultStats(data.data.defaultStats)
       setmonthlyApplications(data.data.monthlyApplications)
     } else {
@@ -37,7 +40,7 @@ const AdminHome = () => {
   }
 
   useEffect(() => {
-    getstatejob()
+    getstatejob();
   }, []);
 
   const totalApplications = monthlyApplications.reduce((acc, app) => acc + app.count, 0);
@@ -86,9 +89,13 @@ const AdminHome = () => {
 
         {/* Chart */}
         <div className="p-4 flex justify-center">
-          <div>
+          {/* <div>
             <h1 className="text-2xl font-bold mb-4 text-center">Monthly Applications</h1>
             <ChartComponent monthlyApplications={monthlyApplications} />
+          </div> */}
+          <div>
+            <h1 className="text-2xl font-bold mb-4 text-center">Application Status</h1>
+            <BarChart defaultStats={defaultStats} />
           </div>
         </div>
 
