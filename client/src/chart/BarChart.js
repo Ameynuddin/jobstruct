@@ -34,21 +34,17 @@ const BarChart = ({ defaultStats }) => {
                     }]
                 },
                 options: {
-                    responsive: true,  
-                    maintainAspectRatio: false 
+                    responsive: true,
+                    maintainAspectRatio: false
                 }
             });
         }
     }, [defaultStats]);
 
     return (
-        <>
-            <div className="w-full flex flex-col items-center">
-                <div className="w-full max-w-6xl">
-                    <canvas ref={chartRef} className="h-96"></canvas>
-                </div>
-            </div>
-        </>
+        <div>
+            <canvas ref={chartRef} className='h-96'></canvas>
+        </div>
     )
 }
 

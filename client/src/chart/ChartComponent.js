@@ -57,7 +57,7 @@ const ChartComponent = ({ monthlyApplications }) => {
               }
             }
           },
-          responsive: true, 
+          responsive: true,
           maintainAspectRatio: false  // Prevents distortion
         }
       });
@@ -65,13 +65,9 @@ const ChartComponent = ({ monthlyApplications }) => {
   }, [monthlyApplications]);
 
   return (
-    <>
-      <div className="w-full flex flex-col items-center">
-        <div className="w-full max-w-6xl">
-          <canvas ref={chartRef} className="w-full h-96"></canvas>
-        </div>
-      </div>
-    </>
+    <div>
+      <canvas ref={chartRef} className="h-96"></canvas>
+    </div>
   )
 }
 
