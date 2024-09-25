@@ -29,9 +29,7 @@ const AdminHome = () => {
     const res = await StateJobAPI()
     if (res.success) {
       const { data } = res;
-      // console.log(data)
-      console.log(defaultStats);
-      console.log(monthlyApplications);
+      console.log(data)
       setdefaultStats(data.data.defaultStats)
       setmonthlyApplications(data.data.monthlyApplications)
     } else {
@@ -89,10 +87,10 @@ const AdminHome = () => {
 
         {/* Chart */}
         <div className="p-4 flex justify-center">
-          {/* <div>
+          <div>
             <h1 className="text-2xl font-bold mb-4 text-center">Monthly Applications</h1>
             <ChartComponent monthlyApplications={monthlyApplications} />
-          </div> */}
+          </div>
           <div>
             <h1 className="text-2xl font-bold mb-4 text-center">Application Status</h1>
             <BarChart defaultStats={defaultStats} />
