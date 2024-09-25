@@ -6,15 +6,15 @@ import BarChart from '../../chart/BarChart';
 
 const DataBox = ({ title, count, gradientFrom, gradientTo, svgPath }) => {
   return (
-    <div className={`shadow-lg rounded-md p-5 bg-gradient-to-r ${gradientFrom} ${gradientTo} flex items-center`}>
+    <div className={`shadow-lg rounded-md p-5 bg-gradient-to-r ${gradientFrom} ${gradientTo} flex items-center transition-all duration-300 ease-in-out transform hover:-translate-y-1 cursor-pointer`}>
       <div className="flex-shrink-0">
-        <svg className="h-12 w-12 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="h-14 w-14 text-white/90" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={svgPath} />
         </svg>
       </div>
-      <div className="ml-5 flex-1">
-        <h5 className="text-white text-lg font-medium mb-1">{title}</h5>
-        <p className="text-white text-3xl font-semibold">{count}</p>
+      <div className="pl-6 flex-1">
+        <h5 className="text-white/85 lg:text-lg md:text-xl sm:text-2xl font-medium mb-1">{title}</h5>
+        <p className="text-white text-4xl font-semibold">{count}</p>
       </div>
     </div>
   );
@@ -46,7 +46,7 @@ const AdminHome = () => {
   return (
     <AdminLayouts>
       <div className="mt-12">
-        <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4 sm:grid-cols-1">
+        <div className="mb-12 grid gap-y-10 gap-x-6 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-4">
 
           {/* Total Applications DataBox */}
           <DataBox
