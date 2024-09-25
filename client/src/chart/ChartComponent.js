@@ -66,7 +66,7 @@ const ChartComponent = ({ monthlyApplications }) => {
 
   return (
     <div>
-      <canvas ref={chartRef} className="h-96"></canvas>
+      <canvas ref={chartRef} className="lg:h-96"></canvas>
     </div>
   )
 }

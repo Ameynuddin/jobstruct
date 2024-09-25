@@ -87,13 +87,14 @@ const AdminHome = () => {
 
         {/* Chart */}
         <div className="p-4 flex justify-around flex-wrap-reverse gap-16">
-          <div className="sm:w-min md:w-1/2 lg:w-max">
+          {/* <div className="sm:w-fit md:w-1/2 lg:w-max"> */}
+          <div className="w-fit">
             <h1 className="text-3xl font-bold mb-4 text-center">Monthly Applications</h1>
-            <ChartComponent monthlyApplications={monthlyApplications}className="overflow-x-auto" />
+            <ChartComponent monthlyApplications={monthlyApplications}className="overflow-x-hidden" />
           </div>
-          <div className="sm:w-min md:w-1/2 lg:w-fit">
+          <div className="w-fit">
             <h1 className="text-3xl font-bold mb-4 text-center">Application Status</h1>
-            <BarChart defaultStats={defaultStats} className="overflow-x-auto" />
+            <BarChart defaultStats={defaultStats} className="overflow-x-hidden" />
           </div>
         </div>
 
