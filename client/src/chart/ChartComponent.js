@@ -25,8 +25,24 @@ const ChartComponent = ({ monthlyApplications }) => {
           datasets: [{
             label: 'Monthly Applications',
             data: counts, // y-axis data
-            backgroundColor: 'rgba(54, 162, 235, 0.5)',
-            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: [
+              'rgba(153, 102, 255, 0.4)',
+              'rgba(255, 99, 132, 0.4)',
+              'rgba(255, 159, 64, 0.4)',
+              'rgba(54, 162, 235, 0.4)',
+              'rgba(255, 205, 86, 0.4)',
+              'rgba(75, 192, 192, 0.4)',
+              'rgba(201, 203, 207, 0.4)'
+            ],
+            borderColor: [
+              'rgba(153, 102, 255)',
+              'rgba(255, 99, 132)',
+              'rgba(255, 159, 64)',
+              'rgba(54, 162, 235)',
+              'rgba(255, 205, 86)',
+              'rgba(75, 192, 192)',
+              'rgba(201, 203, 207)'
+            ],
             borderWidth: 1,
             barThickness: 100, // Set the bar thickness
             maxBarThickness: 100 // Maximum bar thickness
