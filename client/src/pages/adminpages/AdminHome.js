@@ -86,7 +86,7 @@ const AdminHome = () => {
         </div>
 
         {/* Chart */}
-        <div className="p-4 flex justify-center">
+        <div className="p-4 flex justify-around">
           <div>
             <h1 className="text-2xl font-bold mb-4 text-center">Monthly Applications</h1>
             <ChartComponent monthlyApplications={monthlyApplications} />
