@@ -63,12 +63,12 @@ const AdminNavbar = () => {
   // console.log(`http://127.0.0.1:8080/uploads/${currentUser.avatar}`)
 
   return (
-    <>
-      <nav className="bg-white h-16 px-4 flex justify-between items-center border-b border-gray-200">
+    <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
+      <nav className="relative flex h-16 items-center justify-between">
         {/* search input */}
-        <div className="flex items-center">
+        <div className="flex items-center pl-10">
           <IoIosSearch fontSize={20} className='text-gray-400 absolute translate-x-2.5' />
-          <input type="text" placeholder="Search..." className='text-sm focus:outline-none active:outline-none h-10 w-[24rem] border border-gray-300 rounded pl-10 pr-4' />
+          <input type="text" placeholder="Search..." className='text-sm focus:outline-none active:outline-none h-10 w-[12rem] md:w-[24rem] border border-gray-300 rounded pl-10 pr-4' />
           {/* <button type="button">Search</button> */}
         </div>
 
@@ -152,7 +152,7 @@ const AdminNavbar = () => {
 
 
       </nav>
-    </>
+    </div>
   )
 }
 
