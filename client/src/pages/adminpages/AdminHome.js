@@ -86,13 +86,13 @@ const AdminHome = () => {
         </div>
 
         {/* Chart */}
-        <div className="p-4 flex justify-around">
+        <div className="p-4 flex justify-around flex-wrap-reverse gap-16">
           <div>
-            <h1 className="text-2xl font-bold mb-4 text-center">Monthly Applications</h1>
+            <h1 className="text-3xl font-bold mb-4 text-center">Monthly Applications</h1>
             <ChartComponent monthlyApplications={monthlyApplications} />
           </div>
           <div>
-            <h1 className="text-2xl font-bold mb-4 text-center">Application Status</h1>
+            <h1 className="text-3xl font-bold mb-4 text-center">Application Status</h1>
             <BarChart defaultStats={defaultStats} />
           </div>
         </div>
