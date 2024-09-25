@@ -331,14 +331,14 @@ const ShowStatus = async (req, res) => {
 
     // Perform the aggregation for monthly applications
     let monthlyApplications = await Job.aggregate([
-      { $match: { createdBy: userId } },
+      { $match: { createdBy: userId } }, // filter by user ID
       {
         $group: {
-          _id: { year: { $year: '$createdAt' }, month: { $month: "$createdAt" } },
-          count: { $sum: 1 },
+          _id: { year: { $year: '$createdAt' }, month: { $month: "$createdAt" } }, // group by year and month
+          count: { $sum: 1 }, // count the number of documents in each group by adding 1 for each document
         },
       },
-      { $sort: { '_id.year': -1, '_id.month': -1 } },
+      { $sort: { '_id.year': -1, '_id.month': -1 } }, // sort in descending order for past 6-month applications limit
       { $limit: 6 }
     ]);
 
@@ -348,7 +348,7 @@ const ShowStatus = async (req, res) => {
         date: moment().month(month - 1).year(year).format('MMM Y'),
         count
       }))
-      .reverse();
+      .reverse(); // sort in ascending order
 
     // Send response with success status and data
     res.status(200).json({
