@@ -9,7 +9,7 @@ const BarChart = ({ defaultStats }) => {
         if (defaultStats && Object.keys(defaultStats).length > 0) {
             const statuses = Object.keys(defaultStats);
             // console.log('Statuses->', statuses)
-            const counts = Object.values(defaultStats);      
+            const counts = Object.values(defaultStats);
             // console.log('Counts->', counts)
 
             const ctx = chartRef.current.getContext('2d');
@@ -32,6 +32,10 @@ const BarChart = ({ defaultStats }) => {
                         ],
                         hoverOffset: 8
                     }]
+                },
+                options: {
+                    responsive: true,  
+                    maintainAspectRatio: false 
                 }
             });
         }

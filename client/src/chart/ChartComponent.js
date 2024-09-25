@@ -56,7 +56,9 @@ const ChartComponent = ({ monthlyApplications }) => {
                 stepSize: Math.ceil(Math.max(...counts) / 12)
               }
             }
-          }
+          },
+          responsive: true, 
+          maintainAspectRatio: false  // Prevents distortion
         }
       });
     }
