@@ -46,7 +46,7 @@ const AdminHome = () => {
   return (
     <AdminLayouts>
       <div className="mt-12">
-        <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4 sm:grid-cols-1">
 
           {/* Total Applications DataBox */}
           <DataBox
@@ -87,13 +87,13 @@ const AdminHome = () => {
 
         {/* Chart */}
         <div className="p-4 flex justify-around flex-wrap-reverse gap-16">
-          <div>
+          <div className="sm:w-min md:w-1/2 lg:w-max">
             <h1 className="text-3xl font-bold mb-4 text-center">Monthly Applications</h1>
-            <ChartComponent monthlyApplications={monthlyApplications} />
+            <ChartComponent monthlyApplications={monthlyApplications}className="overflow-x-auto" />
           </div>
-          <div>
+          <div className="sm:w-min md:w-1/2 lg:w-fit">
             <h1 className="text-3xl font-bold mb-4 text-center">Application Status</h1>
-            <BarChart defaultStats={defaultStats} />
+            <BarChart defaultStats={defaultStats} className="overflow-x-auto" />
           </div>
         </div>
 
