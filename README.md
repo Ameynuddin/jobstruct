@@ -1,4 +1,4 @@
-# Job Tracker Web App
+# Job Applications Tracker
 Disclaimer: This project is still under development. Some features mentioned herein are yet to be accessible or available.
 
 ## Overview
@@ -100,9 +100,9 @@ The Job Tracker Web App is designed to help job seekers efficiently manage and t
    ![sign_in](client/public/output/sign_in.png)
    
 3. **Dashboard:**
-   The dashboard presents the statistics of total jobs applied and applications pending, declined and scheduled for interview.
-   - Bar chart - number of applications made by months
-   - Pie chart - displays the percentage of jobs pending, scheduled for interview and declined.
+   The dashboard presents the statistics of total jobs applied and applications pending, declined and scheduled for interview:
+   - Bar chart - displays trend of applications made by months
+   - Pie chart - displays proportions of jobs pending, scheduled for interview and declined
    
    ![dashboard](client/public/output/dashboard.png)
    
