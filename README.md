@@ -101,29 +101,31 @@ The Job Tracker Web App is designed to help job seekers efficiently manage and t
    
 3. **Dashboard:**
    The dashboard presents the statistics of total jobs applied and applications pending, declined and scheduled for interview.
+   - Bar chart - number of applications made by months
+   - Pie chart - displays the percentage of jobs pending, scheduled for interview and declined.
    
    ![dashboard](client/public/output/dashboard.png)
    
-4. **Add Job Applications:**
+5. **Add Job Applications:**
    Input your job applications manually, customizing the fields as needed.
 
     ![add_job](client/public/output/add_job.png)
 
-5. **Upload Resumes:**
+6. **Upload Resumes:**
    Upload and store your resumes securely on Google Cloud storage using bucket.
 
-6. **Track Progress:**
+7. **Track Progress:**
    Use advanced sorting and filtering options to manage your applications.
     ![all_jobs](client/public/output/all_jobs.png)
 
-7. **User Profile:**
+8. **User Profile:**
    Manage user information, such as, avatar, name and email.
    ![profile](client/public/output/profile.png)
    
-8. **Set Reminders:** 
+9. **Set Reminders:** 
    Integrate with Google Calendar to set reminders for important dates. (pending feature)
 
-9. **Receive Notifications:** 
+10. **Receive Notifications:** 
    Enable SMS or email notifications for reminders and updates. (pending feature)
 
 ## Contributing
