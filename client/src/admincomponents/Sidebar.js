@@ -65,7 +65,6 @@ function Sidebar() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-
   // logout
   const { LogoutAPI } = useData()
   const Logout = async () => {
