@@ -7,62 +7,47 @@ import { FaUser } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
 import { FaPowerOff } from "react-icons/fa6";
 import { useData } from '../API/ApiContext'
+import { toast } from 'react-toastify'
 
+// Nav button
 const NavButton = ({ to, icon, label, onClick }) => {
   const location = useLocation();
   const isActive = location.pathname === to;
+  console.log(onClick)
 
-  // logout
-  // const { LogoutAPI } = useData()
-
-  // const Logout = async () => {
-  //   const res = await LogoutAPI();
-  //   if (res.success) {
-  //     toast.success("User logout successfully", {
-  //       position: "top-center"
-  //     });
-  //   } else {
-  //     toast.error("Logout failed", {
-  //       position: "top-center"
-  //     })
-  //     console.log('Logout failed: ' + res.error || res.message);
-  //   }
-  // };
-
-  // if (onClick) {
-  //   return (
-  //     <button
-  //       onClick={Logout}
-  //       className={`
-  //         font-bold transition-all 
-  //         disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
-  //         text-xs py-3 rounded-lg w-full flex items-center gap-4 px-4 capitalize
-  //         ${isActive
-  //           ? 'text-white bg-white/10'
-  //           : 'text-white/50 hover:bg-white/10 active:bg-white/30'}
-  //       `}
-  //       type="button"
-  //     >
-  //       {icon}
-  //       <p className="block antialiased text-base leading-relaxed text-inherit font-medium capitalize">
-  //         {label}
-  //       </p>
-  //     </button>
-  //   )
-  // } 
+  if (label === 'Sign Out') {
+    return (
+      <button
+        onClick={onClick}
+        className={`
+      font-bold transition-all 
+      disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
+      text-xs py-3 rounded-lg w-full flex items-center gap-4 px-4 capitalize
+      ${isActive
+            ? 'text-white bg-white/10'
+            : 'text-white/50 hover:bg-white/10 active:bg-white/30'}
+    `}
+        type="button"
+      >
+        {icon}
+        <p className="block antialiased text-base leading-relaxed text-inherit font-medium capitalize">
+          {label}
+        </p>
+      </button>
+    )
+  }
 
   return (
     <Link to={to} className={isActive ? 'active' : ''}>
       <button
-        // onClick={onClick}
         className={`
-          font-bold transition-all 
-          disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
-          text-xs py-3 rounded-lg w-full flex items-center gap-4 px-4 capitalize
-          ${isActive
+        font-bold transition-all 
+        disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none 
+        text-xs py-3 rounded-lg w-full flex items-center gap-4 px-4 capitalize
+        ${isActive
             ? 'text-white bg-white/10'
             : 'text-white/50 hover:bg-white/10 active:bg-white/30'}
-        `}
+      `}
         type="button"
       >
         {icon}
@@ -78,6 +63,23 @@ function Sidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+
+  // logout
+  const { LogoutAPI } = useData()
+  const Logout = async () => {
+    const res = await LogoutAPI();
+    if (res.success) {
+      toast.success("User logout successfully", {
+        position: "top-center"
+      });
+    } else {
+      toast.error("Logout failed", {
+        position: "top-center"
+      })
+      console.log('Logout failed: ' + res.error || res.message);
+    }
   };
 
   return (
@@ -144,8 +146,7 @@ function Sidebar() {
             </li>
             <li>
               <NavButton
-                // onClick="{Logout}"
-                to="/"
+                onClick={Logout}
                 label="Sign Out"
                 icon={<FaPowerOff fontSize={20} className='text-red-400' />}
               />
@@ -165,7 +166,7 @@ function Sidebar() {
           onClick={toggleSidebar}
           className="fixed top-9 left-6 z-40 xl:hidden p-2 bg-gray-800/85 rounded-md"
         >
-          <IoMenu className='text-white text-2xl shadow-lg hover:animate-spin'/>
+          <IoMenu className='text-white text-2xl shadow-lg hover:animate-spin' />
         </button>
       )}
     </>
